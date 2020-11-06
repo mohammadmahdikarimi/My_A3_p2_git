@@ -55,24 +55,25 @@ usegpu = 1
 
 criterion = YoloLoss(S, B, lambda_coord, lambda_noobj,usegpu)
 optimizer = torch.optim.SGD(net.parameters(), lr=learning_rate, momentum=0.9, weight_decay=5e-4)
-
-print('2- yolo imported')
-
 import shutil 
+
 
 #!tar -xf "/MMK_data/pascal_data/VOCtrainval_06-Nov-2007.tar" -C "/MMK_data/pascal_data/" 
 tar = tarfile.open("/MMK_data/pascal_data/VOCtrainval_06-Nov-2007.tar")
 tar.extractall("/raid/pascal_data/")
 
-print('Move")
+print("===============Move train====================")
 shutil.move("/raid/pascal_data/VOCdevkit/", "/raid/pascal_data/VOCdevkit_2007")
 
-
+print("===============Extract test====================")
 #!tar -xf "/MMK_data/pascal_data/VOCtest_06-Nov-2007.tar" -C "/MMK_data/pascal_data/" 
 tar = tarfile.open("/MMK_data/pascal_data/VOCtest_06-Nov-2007.tar")
 tar.extractall("/raid/pascal_data/")
 
 shutil.move("/raid/pascal_data/VOCdevkit/VOC2007", "/raid/pascal_data/VOCdevkit_2007/VOC2007test")
+print("===============Done with Dataset====================")
+
+
 
 file_root_train = '/raid/pascal_data/VOCdevkit_2007/VOC2007/JPEGImages/'
 annotation_file_train = 'voc2007.txt'
