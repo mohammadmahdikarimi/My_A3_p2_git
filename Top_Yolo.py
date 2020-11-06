@@ -18,6 +18,7 @@ from predict import predict_image
 from config import VOC_CLASSES, COLORS
 from kaggle_submission import output_submission_csv
 import matplotlib.pyplot as plt
+import tarfile
 
 #%matplotlib inline
 #%load_ext autoreload
@@ -59,11 +60,17 @@ print('2- yolo imported')
 
 import shutil 
 
-!tar -xf "/MMK_data/pascal_data/VOCtrainval_06-Nov-2007.tar" -C "/MMK_data/pascal_data/" 
+#!tar -xf "/MMK_data/pascal_data/VOCtrainval_06-Nov-2007.tar" -C "/MMK_data/pascal_data/" 
+tar = tarfile.open("/MMK_data/pascal_data/VOCtrainval_06-Nov-2007.tar")
+tar.extractall("/MMK_data/pascal_data/")
+
 shutil.move("/MMK_data/pascal_data/VOCdevkit/", "/MMK_data/pascal_data/VOCdevkit_2007")
 
 
-!tar -xf "/MMK_data/pascal_data/VOCtest_06-Nov-2007.tar" -C "/MMK_data/pascal_data/" 
+#!tar -xf "/MMK_data/pascal_data/VOCtest_06-Nov-2007.tar" -C "/MMK_data/pascal_data/" 
+tar = tarfile.open("/MMK_data/pascal_data/VOCtest_06-Nov-2007.tar")
+tar.extractall("/MMK_data/pascal_data/")
+
 shutil.move("/MMK_data/pascal_data/VOCdevkit/VOC2007", "/MMK_data/pascal_data/VOCdevkit_2007/VOC2007test")
 
 file_root_train = '/MMK_data/pascal_data/VOCdevkit_2007/VOC2007/JPEGImages/'
