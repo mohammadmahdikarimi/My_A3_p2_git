@@ -62,16 +62,17 @@ import shutil
 
 #!tar -xf "/MMK_data/pascal_data/VOCtrainval_06-Nov-2007.tar" -C "/MMK_data/pascal_data/" 
 tar = tarfile.open("/MMK_data/pascal_data/VOCtrainval_06-Nov-2007.tar")
-tar.extractall("/MMK_data/pascal_data/")
+tar.extractall("/MMK_data/pascal_data/VOCdevkit_2007/")
 
-shutil.move("/MMK_data/pascal_data/VOCdevkit/", "/MMK_data/pascal_data/VOCdevkit_2007")
+#print('Move")
+#shutil.move("/MMK_data/pascal_data/VOCdevkit/", "/MMK_data/pascal_data/VOCdevkit_2007")
 
 
 #!tar -xf "/MMK_data/pascal_data/VOCtest_06-Nov-2007.tar" -C "/MMK_data/pascal_data/" 
 tar = tarfile.open("/MMK_data/pascal_data/VOCtest_06-Nov-2007.tar")
-tar.extractall("/MMK_data/pascal_data/")
+tar.extractall("/MMK_data/pascal_data/VOCdevkit_2007/VOC2007test/")
 
-shutil.move("/MMK_data/pascal_data/VOCdevkit/VOC2007", "/MMK_data/pascal_data/VOCdevkit_2007/VOC2007test")
+#shutil.move("/MMK_data/pascal_data/VOCdevkit/VOC2007", "/MMK_data/pascal_data/VOCdevkit_2007/VOC2007test")
 
 file_root_train = '/MMK_data/pascal_data/VOCdevkit_2007/VOC2007/JPEGImages/'
 annotation_file_train = 'voc2007.txt'
@@ -81,7 +82,7 @@ train_loader = DataLoader(train_dataset,batch_size=batch_size,shuffle=True,num_w
 print('Loaded %d train images' % len(train_dataset))
 
 
-file_root_test = '/MMK_data/pascal_data/VOCdevkit_2007/VOC2007test/JPEGImages/'
+file_root_test = '/MMK_data/pascal_data/VOCdevkit_2007/VOC2007test/VOC2007/JPEGImages/'
 annotation_file_test = 'voc2007test.txt'
 
 test_dataset = VocDetectorDataset(root_img_dir=file_root_test,dataset_file=annotation_file_test,train=False, S=S)
