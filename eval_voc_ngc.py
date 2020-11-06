@@ -149,7 +149,7 @@ def evaluate(model, test_dataset_file, test_loader=None):
     sys.stdout.flush()
     model.eval()
     for image_path in tqdm(image_list):
-        result = predict_image(model, image_path, root_img_directory='/MMK_data/pascal_data/VOCdevkit_2007/VOC2007test/VOC2007/JPEGImages/')
+        result = predict_image(model, image_path, root_img_directory='/raid/pascal_data/VOCdevkit_2007/VOC2007test/JPEGImages/')
         for (x1, y1), (x2, y2), class_name, image_id, prob in result:  # image_id is actually image_path
             preds[class_name].append([image_id, prob, x1, y1, x2, y2])
             
