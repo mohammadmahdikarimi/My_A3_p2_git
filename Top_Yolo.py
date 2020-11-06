@@ -45,7 +45,7 @@ else:
     net = resnet50(pretrained=pretrained).to(device)
     
 learning_rate = 0.001
-num_epochs = 1000
+num_epochs = 100
 batch_size = 32
 
 # Yolo loss component coefficients (as given in Yolo v1 paper)
