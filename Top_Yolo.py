@@ -137,9 +137,9 @@ for epoch in range(num_epochs):
     if best_test_loss > test_loss:
         best_test_loss = test_loss
         print('Updating best test loss: %.5f' % best_test_loss)
-        torch.save(net.state_dict(),'best_detector.pth')
+        torch.save(net.state_dict(),'/results/best_detector.pth')
 
-    torch.save(net.state_dict(),'detector.pth')
+    torch.save(net.state_dict(),'/results/detector.pth')
     
 
 net.eval()
@@ -167,4 +167,4 @@ plt.imshow(image)
 
 test_aps = evaluate(net, test_dataset_file=annotation_file_test)
 
-output_submission_csv('my_solution.csv', test_aps)
+output_submission_csv('/results/my_solution.csv', test_aps)
