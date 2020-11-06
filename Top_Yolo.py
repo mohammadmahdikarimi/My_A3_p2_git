@@ -19,9 +19,9 @@ from config import VOC_CLASSES, COLORS
 from kaggle_submission import output_submission_csv
 import matplotlib.pyplot as plt
 
-%matplotlib inline
-%load_ext autoreload
-%autoreload 2
+#%matplotlib inline
+#%load_ext autoreload
+#%autoreload 2
 
 print('1- import done')
 
@@ -44,7 +44,7 @@ else:
     net = resnet50(pretrained=pretrained).to(device)
     
 learning_rate = 0.001
-num_epochs = 100
+num_epochs = 2
 batch_size = 24
 
 # Yolo loss component coefficients (as given in Yolo v1 paper)
