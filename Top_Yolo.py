@@ -19,6 +19,7 @@ from config import VOC_CLASSES, COLORS
 from kaggle_submission import output_submission_csv
 import matplotlib.pyplot as plt
 import tarfile
+import shutil 
 
 #%matplotlib inline
 #%load_ext autoreload
@@ -45,8 +46,8 @@ else:
     net = resnet50(pretrained=pretrained).to(device)
     
 learning_rate = 0.001
-num_epochs = 100
-batch_size = 32
+num_epochs = 50
+batch_size = 24
 
 # Yolo loss component coefficients (as given in Yolo v1 paper)
 lambda_coord = 5
@@ -55,7 +56,7 @@ usegpu = 1
 
 criterion = YoloLoss(S, B, lambda_coord, lambda_noobj,usegpu)
 optimizer = torch.optim.SGD(net.parameters(), lr=learning_rate, momentum=0.9, weight_decay=5e-4)
-import shutil 
+
 
 
 #!tar -xf "/MMK_data/pascal_data/VOCtrainval_06-Nov-2007.tar" -C "/MMK_data/pascal_data/" 
